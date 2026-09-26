@@ -2,10 +2,6 @@
 Wordly is a React-based text utility application that provides useful tools for transforming, formatting, and managing text efficiently.
 
 
-# Wordly
-
-Wordly is a React-based text utility application designed to make everyday text editing simple and efficient.
-
 ## Features
 
 - Convert text to uppercase
