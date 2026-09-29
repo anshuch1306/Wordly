@@ -1,72 +1,63 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-
+import {Link} from 'react-router-dom';
 export default function Navbar(props) {
   return (
      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} `}>
-        <div className="container-fluid">
+        <div className="container-fluid d-flex align-items-center">
 
-          <a className="navbar-brand" href="/">
-            {props.title}
-          </a>
+          <Link className="navbar-brand" to="/">
+            <strong>{props.title}</strong>
+          </Link>
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+            
+            <div className="d-flex align-items-center">
+            <ul className="navbar-nav flex-row ">
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-
-              <li className="nav-item">
-                <to
-                  className="nav-link active"
+              <li className="nav-item mx-4">
+                <Link
+                  className="nav-link "
                   aria-current="page"
-                  href="#"
+                  to="/"
                 >
                   Home
-                </to>
+                </Link>
               </li>
 
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+              <li className="nav-item mx-4">
+                <Link className="nav-link" to="/about">
                   {props.feature}
-                </a>
+                </Link>
               </li>
 
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+              <li className="nav-item mx-4">
+                <a className="nav-link" href="/">
                   Explore
                 </a>
               </li>
 
-              <li className="nav-item">
+              <li className="nav-item mx-4">
                 <a
-                  className="nav-link disabled"
-                  href="#"
-                  aria-disabled="true"
+                  className="nav-link "
+                  href="/"
+                
                 >
                   Support
                 </a>
               </li>
 
             </ul>
-          </div>
-
-        </div>
-        <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+        
+          </div>    
+        <div className={`form-check form-switch ms-auto text-${props.mode==='light'?'dark':'light'}`}>
   <input className="form-check-input" type="checkbox" role="switch" onChange={props.toggleMode} id="switchCheckDefault"/>
   <label className="form-check-label" htmlFor="switchCheckDefault">Change Mode</label>
 </div>
+        </div>
       </nav>
-  )
+
+
+)
 }
 
 Navbar.propTypes ={

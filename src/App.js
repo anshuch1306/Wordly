@@ -2,10 +2,15 @@ import './App.css';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-// import About from './components/About';
-
-
+import About from './components/About';
 import React,{useState} from 'react';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
+
 function App() {
   const [mode,setmode] = useState("light");
   const [alert,setalert] = useState(null);
@@ -36,15 +41,26 @@ function App() {
   }
   return (
     <>
+   <Router>
       {/* <Navbar title = "Anshu" feature="Good Feature"/> */}
       <Navbar mode = {mode} title = "Wordly" feature="About" toggleMode = {toggleMode}  />
       <Alert alert={alert} />    
       <div className="container">
-      <TextForm heading = "Enter your text" mode = {mode} showAlert={showAlert}/>
+      <Routes>
+      <Route
+      path="/"
+       element={
+       <TextForm heading = "Try Wordly - Word Counter, Character Counter, Remove Extra Spaces" mode = {mode} 
+       showAlert={showAlert}
+       />
+       }
+      />
+      <Route path= "/about" element={<About mode = {mode}/>}/>
+       </Routes>  
       </div>
-      {/* <About/> */}
+      
 
-
+</Router>
 </>
   );
 }

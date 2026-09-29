@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.dark-arrow::after {
+  filter: brightness(0) invert(1);
+}
+
+.light-arrow::after {
+  filter: brightness(0);
+}
+
+.form-control:focus{
+  box-shadow: none;
+}

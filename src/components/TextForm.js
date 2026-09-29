@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 
 
 export default function TextForm(props) {
+
     const handleUpClick = () =>{
         console.log("change te text");
         let newText = text.toUpperCase();
@@ -22,13 +23,13 @@ export default function TextForm(props) {
     }
 
     const handleCopy=()=>{
-      var text = document.getElementById("myBox");
-      text.select();
-      navigator.clipboard.writeText(text.value);
+      navigator.clipboard.writeText(text);
+      
       props.showAlert("Copied to Clipboard","success"); 
+      
     }
 
-    const handlSpace=()=>{
+    const handleSpace=()=>{
       let newText = text.split(/[ ]+/);
       setText(newText.join(" "));
       props.showAlert("Removed Extra Space","success");
@@ -60,27 +61,30 @@ export default function TextForm(props) {
     const [previousText,setPreviousText] = useState ("");
     return (
     <>
-    <div className="container my-3">
-    <h2>{props.heading}</h2>
+    <div className="container my-4">
+    <h1>{props.heading}</h1>
     <div className="mb-3">
-    <label htmlFor="myBox" className="form-label">Email address</label>
-    <textarea className="form-control" value = {text} onChange={handleOnChange} id="myBox" rows="8" style={{backgroundColor: props.mode==='dark'?'grey':'white',
+  
+    <textarea className="form-control my-4" value = {text} onChange={handleOnChange} id="myBox" rows="8"  style={{backgroundColor: props.mode==='dark'?'#1d267b':'white',
         color: props.mode === 'dark' ? 'white' : 'black'}}></textarea>
     </div>
-    <button className="btn btn-primary mx-3" onClick={handleUpClick} >Convert to Uppercase</button>
-    <button className="btn btn-primary mx-3" onClick={handleUpClickLower} >Convert to Lowercase</button>
-    <button className="btn btn-primary mx-3" onClick={handleClearClick} >Clear Text</button>
-    <button type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-3 my-2" onClick={handleUpClick} >Convert to Uppercase</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-3 my-2"  onClick={handleUpClickLower} >Convert to Lowercase</button>
+    <button disabled={text.length===0}  className="btn btn-primary mx-3 my-2" onClick={handleClearClick} >Clear Text</button>
+    <button disabled={text.length===0} type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
 
-    <button className="btn btn-primary mx-3" onClick={Reverse} >Reverse</button>
-    <button className="btn btn-primary mx-3" onClick={Undo} >Undo</button>
-    <button className="btn btn-primary mx-3" onClick={handleCopy} >Copy text</button>
-    <button className="btn btn-primary mx-3" onClick={handlSpace} >Remove extra space</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-3 my-2" onClick={Reverse} >Reverse</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-3 my-2" onClick={Undo} >Undo</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-3 my-2" onClick={handleCopy} >Copy text</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-3 my-2" onClick={handleSpace} >Remove extra space</button>
     </div>
     <div className="container my-3">
-      <h1>Yor text summary</h1>
-      <p>{text.split(" ").length-1} words and {text.length} characters</p>
-      <p>time to read {text.split(" ").length*0.008} minutes</p>
+      <h1>Your text summary</h1>
+      <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+      <p>time to read {(text.split(/\s+/).filter((element)=>{return element.length!==0}).length*0.008).toFixed(2)} minutes</p>
+
+      <h2>Preview</h2>
+      <p>{text.length>0?text:"Nothing to preview!"}</p>
     </div>
     </>
   )

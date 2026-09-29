@@ -1,73 +1,66 @@
-import React,{useState} from 'react'
+// import React,{useState} from 'react'
 
-export default function About() {
-    const [myStyle,setmyStyle] = useState({
-        color: 'black',
-        backgroundColor: 'white',
-    })
-    
-    const [btntext,setBtnText] = useState("Enable Dark Mode");
-    const dark = () =>{
-        if(myStyle.color ==='white'){
-            setmyStyle ({
-                color: 'black',
-                backgroundColor: 'white',
-                
-            })
-            setBtnText("Enable Dark Mode");
-        }
-        else{
-            setmyStyle ({
-                color: 'white',
-                backgroundColor: 'black',
-                border: '1px solid white',
-            })
-            setBtnText("Enable Light Mode");
-        }
+export default function About(props) {
+    // const [myStyle,setmyStyle] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white',
+    // })
+    let myStyle = {
+      color : props.mode ==='dark' ? 'white':'black',
+      backgroundColor : props.mode ==='dark' ? '#122346':'#c2c5ca',
     }
+
+    let buttonStyle = {
+  color: props.mode === 'dark' ? 'white' : 'black',
+  backgroundColor: props.mode === 'dark' ? '#091428' : '#8b8d91',
+}
+    
   return (
-    <div className="container" style={myStyle}>
-        <h1 className="my-3">Info</h1>
+    <div className="container" >
+        <h1 className="my-4"><b>Information</b></h1>
         <div className="accordion" id="accordionExample"  style={myStyle}>
   <div className="accordion-item"  style={myStyle}>
     <h2 className="accordion-header">
-      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" style={myStyle} aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
+
+
+      <button className={`accordion-button collapsed ${props.mode === 'dark' ? 'dark-arrow' : 'light-arrow'}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" style={buttonStyle} aria-expanded="true" aria-controls="collapseOne">
+        <b>Simplifying Everyday Text Tasks</b>
       </button>
+
+      
     </h2>
-    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+    <div id="collapseOne" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
       <div className="accordion-body">
-        <strong>This is the first items accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+Wordly is an interactive text utility application built to make text manipulation quick and convenient. With features like uppercase/lowercase conversion, text reversal, extra-space removal, copy, text-to-speech, and dark mode, users can handle everyday text tasks with ease.      </div>
     </div>
   </div>
+
+
+
   <div className="accordion-item"  style={myStyle}>
     <h2 className="accordion-header">
-      <button  style={myStyle} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
+      <button  style={buttonStyle}className={`accordion-button collapsed ${props.mode === 'dark' ? 'dark-arrow' : 'light-arrow'}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <b>Smart Text Editor</b>
       </button>
     </h2>
     <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div className="accordion-body">
-        <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+      <div className="accordion-body "style={myStyle}>
+Wordly is a web-based text utility application that helps users perform common text-editing tasks effortlessly. From changing text cases to removing extra spaces, copying, reversing, and converting text to speech, Wordly brings useful tools together in one place.      </div>
     </div>
   </div>
-  <div className="accordion-item"  style={myStyle}>
+
+
+ <div className="accordion-item"  style={myStyle}>
     <h2 className="accordion-header">
-      <button  style={myStyle} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
+      <button   className={`accordion-button collapsed ${props.mode === 'dark' ? 'dark-arrow' : 'light-arrow'}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"   style={buttonStyle}>
+        <b>Text-to-Speech Feature</b>
       </button>
     </h2>
     <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div className="accordion-body">
-        <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+      <div className="accordion-body " style={myStyle}>
+Wordly’s Speak feature converts written text into spoken words. Users can enter or edit text and listen to it using the text-to-speech functionality, making the content easier to hear and understand.  </div>
     </div>
-    </div>
-    </div>
-    <div className="container">
-        <button type= "button" className="dark btn btn-warning my-3" onClick={dark}>{btntext}</button>
+  </div>
     </div>
     </div>
   )
