@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Wordly/static/css/main.dc4d6ff2.css",
-    "main.js": "/Wordly/static/js/main.cf795090.js",
+    "main.css": "/Wordly/static/css/main.c86a9f42.css",
+    "main.js": "/Wordly/static/js/main.2f968d89.js",
     "static/js/453.ff84864b.chunk.js": "/Wordly/static/js/453.ff84864b.chunk.js",
     "index.html": "/Wordly/index.html",
-    "main.dc4d6ff2.css.map": "/Wordly/static/css/main.dc4d6ff2.css.map",
-    "main.cf795090.js.map": "/Wordly/static/js/main.cf795090.js.map",
+    "main.c86a9f42.css.map": "/Wordly/static/css/main.c86a9f42.css.map",
+    "main.2f968d89.js.map": "/Wordly/static/js/main.2f968d89.js.map",
     "453.ff84864b.chunk.js.map": "/Wordly/static/js/453.ff84864b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc4d6ff2.css",
-    "static/js/main.cf795090.js"
+    "static/css/main.c86a9f42.css",
+    "static/js/main.2f968d89.js"
   ]
 }
