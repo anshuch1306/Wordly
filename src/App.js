@@ -41,7 +41,7 @@ function App() {
   }
   return (
     <>
-   <Router>
+   <Router basename="/Wordly">
       {/* <Navbar title = "Anshu" feature="Good Feature"/> */}
       <Navbar mode = {mode} title = "Wordly" feature="About" toggleMode = {toggleMode}  />
       <Alert alert={alert} />    
