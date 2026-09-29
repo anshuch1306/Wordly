@@ -41,7 +41,7 @@ function App() {
   }
   return (
     <>
-   <Router basename="/Wordly">
+     <Router basename={process.env.PUBLIC_URL}>
       {/* <Navbar title = "Anshu" feature="Good Feature"/> */}
       <Navbar mode = {mode} title = "Wordly" feature="About" toggleMode = {toggleMode}  />
       <Alert alert={alert} />    
@@ -53,6 +53,7 @@ function App() {
        <TextForm heading = "Try Wordly - Word Counter, Character Counter, Remove Extra Spaces" mode = {mode} 
        showAlert={showAlert}
        />
+      
        }
       />
       <Route path= "/about" element={<About mode = {mode}/>}/>
